@@ -1,6 +1,6 @@
 <footer class="bg-dark text-white d-flex align-items-center" style="height: 1cm;">
         <div class="container text-left">
-            <p class="mb-0">Seja bem vindo(a) <?php echo htmlspecialchars($nome); ?>!</p>
+            <p class="mb-0">Seja bem vindo(a) <?php echo htmlspecialchars($_SESSION['nome']); ?>!</p>
         </div>
         <div class="container text-right">
             <p class="mb-0">&copy; <?php echo date("Y"); ?> Seu Nome ou Empresa. Todos os direitos reservados.</p>

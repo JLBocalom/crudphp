@@ -134,7 +134,7 @@ if (isset($_GET['edit'])) {
                 <td><?php echo $prod['modelo']; ?></td>
                 <td><?php echo $prod['valorunitario']; ?></td>
                 <td><?php echo $prod['categoria']; ?></td>
-                <td><?php echo $prod['url_img']; ?></td>
+                <td><img src="<?php echo $prod['url_img']; ?>" alt="prod" style="width: 100px;"></td>
                 <td><?php echo $prod['ativo']; ?></td>
                 <td>
                 <a href="?edit=<?php echo $prod['id']; ?>" class="btn btn-success" type="submit" name="save">Editar</a>

@@ -1,23 +1,37 @@
-<?php include 'principal_controller.php'; ?>
+<?php 
+include 'principal_controller.php'; 
+
+// Pega todos os produtos para preencher os dados da tabela 
+$produtos = getProdutos();
+?>
+
 <?php include 'header.php'; ?>
-<!DOCTYPE html>
-<html lang="en">
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-<div class="flex-grow-1">
-        <!-- Conteúdo da página vai aqui -->
-        <h2 class="container text-center">Olá, <?php echo htmlspecialchars($nome); ?>!</h2>
+
+<div class="container">
+    <div class="flex-grow-1">
+        <!--<h3>Olá, <?php echo htmlspecialchars($nome); ?>!</h3>
+
+        <form method="POST" action="">
+            <input type="submit" name="logout" value="Logout">
+        </form>-->
     </div>
-    </body>
-</html>
+</div>
+<div class="container p-2" style="display: flex; justify-content: center; flex-wrap: wrap;">
+    <?php foreach ($produtos as $produto): ?>    
+        <div class="card  float-left" style="width: 60%; margin:10px;">
+            <img src="<?php echo $produto['url_img']; ?>" class="rounded mx-auto d-block" alt="Imagem do Produto" style="width: 100px;">
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $produto['nome']; ?></h5>
+                <p class="card-text"><?php echo $produto['descricao']; ?></p>
+                <p><strong>Preço:</strong> R$ <?php echo number_format($produto['valorunitario'], 2, ',', '.'); ?></p>
+                <!-- Formulário para adicionar ao carrinho -->
+                <form method="POST" action="principal.php">
+                    <input type="hidden" name="id_produto" value="<?php echo $produto['id']; ?>">
+                    <button type="submit" name="adicionar_produto" class="btn btn-primary btn-block">Comprar</button>
+                </form>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
 
 <?php include 'footer.php'; ?>
